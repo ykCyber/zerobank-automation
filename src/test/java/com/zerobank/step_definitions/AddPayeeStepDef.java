@@ -1,6 +1,6 @@
 package com.zerobank.step_definitions;
 
-import com.zerobank.pages.AddNewPayee;
+import com.zerobank.pages.PayBills;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Then;
@@ -12,7 +12,7 @@ public class AddPayeeStepDef {
     @Then("the user accesses the Add New Payee tab")
     public void the_user_accesses_the_Add_New_Payee_tab() {
         Driver.get().findElement(By.linkText("Add New Payee")).click();
-        BrowserUtils.waitForVisibility(new AddNewPayee().payeeNameBox,
+        BrowserUtils.waitForVisibility(new PayBills.AddNewPayee().payeeNameBox,
                 2);
     }
 
@@ -29,7 +29,7 @@ public class AddPayeeStepDef {
         String payee_details = dataSet.get("Payee details");
         System.out.println("payee_details = " + payee_details);
 
-        AddNewPayee add = new AddNewPayee();
+        PayBills.AddNewPayee add = new PayBills.AddNewPayee();
         add.addNewPayee(name, payee_address, account, payee_details);
 
     }

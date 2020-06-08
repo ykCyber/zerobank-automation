@@ -83,6 +83,6 @@ public abstract class BasePage {
         return isActive.contentEquals("active") & titleIsCorrect;
     }
 
-    WebDriverWait wait = new WebDriverWait(Driver.get(),10);
+   WebDriverWait wait = new WebDriverWait(Driver.get(),10);
 
 }
