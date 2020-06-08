@@ -1,5 +1,6 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -49,11 +50,14 @@ public abstract class BasePage {
     }
 
     public void goToAccountActivityPage() {
-
         accountActivityTab.click();
+
     }
 
     public void goToPayBills() {
+
+
+//        BrowserUtils.waitForClickablility(payBills,3);
         payBills.click();
     }
 
@@ -80,4 +84,5 @@ public abstract class BasePage {
     }
 
     WebDriverWait wait = new WebDriverWait(Driver.get(),10);
+
 }

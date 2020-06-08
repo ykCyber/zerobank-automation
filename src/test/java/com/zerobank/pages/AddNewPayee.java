@@ -1,11 +1,12 @@
 package com.zerobank.pages;
 
+import com.zerobank.pages.BasePage;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
 public class AddNewPayee extends BasePage {
     @FindBy(id = "np_new_payee_name")
@@ -26,10 +27,10 @@ public class AddNewPayee extends BasePage {
     }
 
     public void addNewPayee(String name, String address, String account, String details) {
-//        BrowserUtils.sendKeys(payeeNameBox,name);
-//        BrowserUtils.sendKeys(payeeAddressBox, address);
-//        BrowserUtils.sendKeys(payeeAccountBox, account);
-//        BrowserUtils.sendKeys(payeeDetailBox, details);
+        //        BrowserUtils.sendKeys(payeeNameBox,name);
+        //        BrowserUtils.sendKeys(payeeAddressBox, address);
+        //        BrowserUtils.sendKeys(payeeAccountBox, account);
+        //        BrowserUtils.sendKeys(payeeDetailBox, details);
 
         payeeNameBox.sendKeys(name);
         payeeAddressBox.sendKeys(address);
@@ -41,3 +42,5 @@ public class AddNewPayee extends BasePage {
         //       System.out.println("message.isDisplayed() = " + message.isDisplayed());
     }
 }
+
+

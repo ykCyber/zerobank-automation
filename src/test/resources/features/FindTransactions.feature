@@ -4,11 +4,14 @@ Feature: Find Transactions in Account Activity
     Given the user logged in with correct credentials
     And the user accesses the Find Transactions tab
 
-
+@test
   Scenario: Search by dates
     When the user enters date range from "2012-09-01" to "2012-09-06"
     And clicks search
     Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"
+
+
+
     When the user enters date range from "2012-09-02" to "2012-09-06"
     And clicks search
     Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"

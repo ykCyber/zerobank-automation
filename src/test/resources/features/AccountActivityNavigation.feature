@@ -9,6 +9,7 @@ Feature:    Navigating	to	specific	accounts	in	Accounts	Activity
     And Account	drop down should have "<accountType>" selected
     Examples:
       | accountType |
+      | Savings     |
       | Brokerage   |
       | Checking    |
       | Credit Card |

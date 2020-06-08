@@ -3,8 +3,6 @@ package com.zerobank.step_definitions;
 import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.pages.BasePage;
-import com.zerobank.pages.ShowTransactions;
-import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -31,7 +29,7 @@ public class AccountActivityStepDef {
 
     @Then("Account	drop down should have {string} selected")
     public void account_drop_down_should_have_selected(String accountType) {
-        ShowTransactions showTransactions = new ShowTransactions();
+        AccountActivityPage.ShowTransactions showTransactions = new AccountActivityPage.ShowTransactions();
         showTransactions.isSelected(accountType);
         System.out.println("showTransactions.isSelected(string) = " + showTransactions.isSelected(accountType));
 

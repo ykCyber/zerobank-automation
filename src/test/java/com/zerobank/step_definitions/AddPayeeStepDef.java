@@ -11,13 +11,13 @@ import java.util.Map;
 public class AddPayeeStepDef {
     @Then("the user accesses the Add New Payee tab")
     public void the_user_accesses_the_Add_New_Payee_tab() {
-        new AddNewPayee().goToPayBills();
         Driver.get().findElement(By.linkText("Add New Payee")).click();
-        BrowserUtils.waitForVisibility(new AddNewPayee().payeeNameBox, 2);
+        BrowserUtils.waitForVisibility(new AddNewPayee().payeeNameBox,
+                2);
     }
 
     @Then("creates new payee using following information")
-    public void creates_new_payee_using_following_information(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+    public void creates_new_payee_using_following_information(io.cucumber.datatable.DataTable dataTable) {
         Map<String, String> dataSet = dataTable.asMap(String.class, String.class);
         String name = dataSet.get("Payee Name");
         System.out.println("name = " + name);
@@ -37,7 +37,6 @@ public class AddPayeeStepDef {
 
     @Then("message {string} displayed")
     public void message_displayed(String string) {
-        // Write code here that turns the phrase above into concrete actions
 
     }
 }
