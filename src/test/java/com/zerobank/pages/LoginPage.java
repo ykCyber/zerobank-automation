@@ -11,9 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
-    public LoginPage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
+
+
 
     @FindBy(xpath = "//div[@class='alert alert-error']")
     WebElement alert;

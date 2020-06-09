@@ -26,16 +26,24 @@ public class PurchaseForeingCurrncyStepDef {
     }
 
     @When("user tries	to	calculate	cost	without	selecting	a	{string}")
-    public void user_tries_to_calculate_cost_without_selecting_a_currency(String currency) {
+    public void ser_tries_to_calculate_cost_without_selecting_a_currency(String currency) {
         PayBills.PurchaseFCC page = new PayBills.PurchaseFCC();
         page.calculateWithoutSelection(currency);
         BrowserUtils.waitFor(1);
     }
 
+    @When("user calculates amount {int} from currency {string}  to {string}")
+    public void user_calculates_amount_from_currency_to(Integer amount, String from, String to) {
+        PayBills.PurchaseFCC page = new PayBills.PurchaseFCC();
+        page.calculateWithSelection(amount, from, to);
+        BrowserUtils.waitFor(10);
+    }
+
     @Then("error message should be displayed")
     public void error_message_should_be_displayed() {
-       PayBills.PurchaseFCC page= new PayBills.PurchaseFCC();
-        page.isAlertPresent();
+        PayBills.PurchaseFCC page = new PayBills.PurchaseFCC();
+        Assert.assertTrue("Alert is presende ", new PayBills.PurchaseFCC().isAlertPresent());
+
 
     }
 }

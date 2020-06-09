@@ -1,6 +1,5 @@
 package com.zerobank.pages;
 
-import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -27,9 +26,9 @@ public abstract class BasePage {
     @FindBy(id = "searchTerm")
     protected WebElement searchBox;
 
-    public void BasePage() {
-        PageFactory.initElements(Driver.get(), this);
-    }
+   public BasePage() {
+       PageFactory.initElements(Driver.get(),this);
+   }
 
     public void search(String searchTerm) {
         searchBox.sendKeys(searchTerm, Keys.ENTER);
@@ -67,8 +66,9 @@ public abstract class BasePage {
 
 
     public void goToTransferFunds() {
+
         transferFundsTab.click();
-    }
+   }
 
     public static String getPageTitle() {
         String pageTitle = Driver.get().getTitle().replace("Zero - ", "");

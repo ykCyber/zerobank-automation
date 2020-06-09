@@ -17,8 +17,7 @@ Feature: Purchase Foreign Currency
       | Norway (krone)        |
       | New Zealand (dollar)  |
       | Singapore (dollar)    |
-
-@wip
+ @wip
   Scenario: Error message for not selecting	currency
     Given the user logged in with correct credentials
     Given the user accesses the Purchase foreign currency cash tab
@@ -27,6 +26,7 @@ Feature: Purchase Foreign Currency
 
   @wip
   Scenario:    Error	message for	not	entering	value
+    Given the user logged in with correct credentials
     Given the user accesses the Purchase foreign currency cash tab
-    When    user tries	to	calculate	cost	without	selecting	a	"Amount"
-    Then error message should be displayed
+    When user calculates amount 200 from currency "Norway(krone)"  to "curruncy"
+#    Then error message should be displayed

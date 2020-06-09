@@ -1,5 +1,6 @@
 package com.zerobank.pages;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.junit.Assert;
@@ -9,13 +10,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PayBills extends BasePage {
-public PayBills() {
-    PageFactory.initElements(Driver.get(),this);
-}
 
     public static class PurchaseFCC extends BasePage {
         public PurchaseFCC() {
@@ -57,20 +54,31 @@ public PayBills() {
             return elementsText.contains(currency);
         }
 
-        public void calculateWithoutSelection(String info) {
-            List<WebElement> webElements = new ArrayList<>();
-            webElements.add(amountBox);
-            webElements.add(inDollorsRadioButton);
-            webElements.add(selectedCurrencyRadioButton);
-                if (!info.contentEquals("Currency")) {
-                    Select select = new Select(currencyDropDown);
-                    select.selectByIndex(5);
+        public void calculateWithSelection(int amount, String from, String to) {
+            amountBox.sendKeys(amount + "");
+            selectTheCurrency(from);
 
-                }
-            for (WebElement webElement : webElements) {
-                if (!webElement.getText().contains(info) ){
-                    webElement.click();
-                }
+        }
+
+        private void selectTheCurrency(String from) {
+            Select select = new Select(currencyDropDown);
+            List<WebElement> options = select.getOptions();
+            options.forEach(o-> System.out.println("o = " + o.getText()));
+            select.selectByVisibleText(from);
+            System.out.println("select = " + select.getOptions());
+        }
+
+        public void calculateWithoutSelection(String info) {
+
+            if (info.contentEquals("Currency")) {
+                System.out.println("is not selected " + info);
+                amountBox.sendKeys("200");
+                inDollorsRadioButton.click();
+                calculateButton.click();
+            } else {
+                Select select = new Select(currencyDropDown);
+                select.selectByIndex(2);
+                inDollorsRadioButton.click();
                 calculateButton.click();
             }
 
