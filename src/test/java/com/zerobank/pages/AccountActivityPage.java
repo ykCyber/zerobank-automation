@@ -19,10 +19,10 @@ public class AccountActivityPage extends BasePage {
     }
 
     @FindBy(linkText = "Find Transactions")
-    WebElement findTranscations;
+    protected WebElement findTranscations;
 
     @FindBy(linkText = "Show Transactions")
-    WebElement showTransactions;
+    protected WebElement showTransactions;
 
 
     public void goToFindTranscations() {
@@ -60,12 +60,15 @@ public class AccountActivityPage extends BasePage {
         @FindBy(xpath = "//div[@id='filtered_transactions_for_account']//td[1]")
         List<WebElement> resultDates;
         @FindBy(id = "")
-        public WebElement resultTypes;
+        protected WebElement resultTypes;
 
         @FindBy(xpath = "//div[@id='ui-tabs-2']//tr//td[2]")
         List<WebElement> resultDescriptions;
+        @FindBy(id = "")
+        protected WebElement allSearchResults;
+
         @FindBy(id = "aa_description")
-        WebElement descriptonBox;
+        protected WebElement descriptonBox;
         @FindBy(className = "well")
         WebElement noResulText;
         @FindBy(id = "aa_type")
@@ -126,7 +129,7 @@ public class AccountActivityPage extends BasePage {
         }
 
         public boolean isSearchResultContains(String string) {
-            BrowserUtils.waitFor(2);
+            BrowserUtils.waitFor(1);
 
             List<String> elementsText = BrowserUtils.getElementsText(resultDescriptions);
             boolean contains = false;
@@ -151,6 +154,7 @@ public class AccountActivityPage extends BasePage {
             boolean toBoolean = toDate >= firstLine;
             return fromBoolean & toBoolean;
         }
+
         //select withdrawl or Deposit options
         public void selectType(String type) {
             Select select = new Select(selectType);
@@ -172,6 +176,10 @@ public class AccountActivityPage extends BasePage {
             String actualSelection = accountSelectMenu.getFirstSelectedOption().getText();
             return actualSelection.contentEquals(expectedSelection);
         }
+
+
     }
+
+
 }
 

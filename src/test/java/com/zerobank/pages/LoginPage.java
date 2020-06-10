@@ -10,8 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LoginPage extends BasePage {
+import java.util.List;
 
+public class LoginPage extends BasePage {
 
 
     @FindBy(xpath = "//div[@class='alert alert-error']")
@@ -52,13 +53,12 @@ public class LoginPage extends BasePage {
             return !errorMessageDisplayed;
         } else
             System.out.println("Logged in successfully");
-            return isPageActive("Account Summary");
+        return isPageActive("Account Summary");
 
     }
 
 
     public boolean loginWithTrueCredentials() {
-
         return login(ConfigurationReader.get("userName"), ConfigurationReader.get("password"));
     }
 }

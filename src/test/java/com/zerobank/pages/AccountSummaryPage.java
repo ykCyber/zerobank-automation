@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class AccountSummaryPage extends BasePage {
     public AccountSummaryPage() {
         PageFactory.initElements(Driver.get(), this);
@@ -16,4 +18,6 @@ public class AccountSummaryPage extends BasePage {
     public void goToAccountType(String accountType) {
         Driver.get().findElement(By.linkText(accountType)).click();
     }
+
+
 }

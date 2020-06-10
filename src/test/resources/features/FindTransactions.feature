@@ -33,6 +33,7 @@ Feature: Find Transactions in Account Activity
     Given the user accesses the Find Transactions tab
     And clicks search
     Then results should contain "<type>"
+    Then results should contain "<otherType>"
     When user selects type "<type>"
     Then results should contain "<type>"
     But there is NO "<otherType>"

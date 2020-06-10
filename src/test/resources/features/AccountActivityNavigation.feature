@@ -1,4 +1,4 @@
-Feature:    Navigating	to	specific	accounts	in	Accounts	Activity
+Feature: Navigating	to	specific	accounts	in	Accounts	Activity
 
   Background:
     Given the user logged in with correct credentials

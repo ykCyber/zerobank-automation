@@ -11,20 +11,19 @@ public class LoginStepDefinitions {
     //login with true userName and Password
     @Given("the user logged in with correct credentials")
     public void the_user_logged_in_with_correct_credentials() {
+
         loginPage.loginWithTrueCredentials();
     }
 
 
     @Given("the user tries to login with inValid credentials")
     public void the_user_tries_to_login_with_inValid_credentials() {
-        boolean flag = loginPage.login("xxxx", "xxxx");
-        Assert.assertFalse("login with inValid credentials ", flag);
+         Assert.assertFalse("login with inValid credentials ", loginPage.login("xxxx", "xxxx"));
     }
 
     @Given("the user tries to login with empty credentials")
     public void the_user_tries_to_login_with_empty_credentials() {
-        boolean flag = loginPage.login(" ", " ");
-        Assert.assertFalse("login with empty credentials", flag);
+        Assert.assertFalse("login with empty credentials", loginPage.login(" ", " "));
     }
 
 

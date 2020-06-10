@@ -2,6 +2,8 @@ package com.zerobank.step_definitions;
 
 import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.zerobank.pages.AccountActivityPage;
+import com.zerobank.pages.LoginPage;
+import com.zerobank.pages.PayBills;
 import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -34,6 +36,9 @@ public class FindTransactionsSteps {
     @Given("the user accesses the Find Transactions tab")
     public void the_user_accesses_the_Find_Transactions_tab() {
         new AccountActivityPage().goToFindTranscations();
+        new LoginPage();
+        new AccountActivityPage();
+        new PayBills.PurchaseFCC().gotoPage("Acitiva");
     }
 
     @When("the user enters date range from {string} to {string}")
