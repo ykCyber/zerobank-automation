@@ -9,6 +9,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import sun.java2d.pipe.SpanShapeRenderer;
+
+import java.util.Date;
+import java.util.logging.SimpleFormatter;
 
 
 public class PurchaseForeingCurrncyStepDef {
@@ -17,6 +21,7 @@ public class PurchaseForeingCurrncyStepDef {
         PayBills.AddNewPayee a = new PayBills.AddNewPayee();
         a.goToPayBills();
         Driver.get().findElement(By.linkText("Purchase Foreign Currency")).click();
+
     }
 
     @Then("following currencies should be available")

@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class AccountActivityPage extends BasePage {
+public class AccountActivityPage extends BasePage implements ResultsTable {
     public AccountActivityPage() {
         PageFactory.initElements(Driver.get(), this);
     }
@@ -59,13 +59,11 @@ public class AccountActivityPage extends BasePage {
         protected WebElement findButton;
         @FindBy(xpath = "//div[@id='filtered_transactions_for_account']//td[1]")
         List<WebElement> resultDates;
-        @FindBy(id = "")
-        protected WebElement resultTypes;
+
 
         @FindBy(xpath = "//div[@id='ui-tabs-2']//tr//td[2]")
         List<WebElement> resultDescriptions;
-        @FindBy(id = "")
-        protected WebElement allSearchResults;
+
 
         @FindBy(id = "aa_description")
         protected WebElement descriptonBox;

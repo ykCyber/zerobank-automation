@@ -1,5 +1,6 @@
 package com.zerobank.step_definitions;
 
+import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.PayBills;
 import io.cucumber.java.en.Then;
 
@@ -23,6 +24,10 @@ public class AddPayeeStepDef {
 
         PayBills.AddNewPayee add = new PayBills.AddNewPayee();
         add.addNewPayee(name, payee_address, account, payee_details);
+
+
+
+        new AccountActivityPage().goToFindTranscations();
 
     }
 

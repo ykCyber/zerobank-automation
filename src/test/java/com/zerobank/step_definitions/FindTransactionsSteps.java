@@ -1,6 +1,5 @@
 package com.zerobank.step_definitions;
 
-import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.LoginPage;
 import com.zerobank.pages.PayBills;
@@ -15,7 +14,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class FindTransactionsSteps {
@@ -68,6 +66,8 @@ public class FindTransactionsSteps {
     @Then("results should contain {string}")
     public void results_should_contain(String string) {
         System.out.println("Searching for " + string);
+
+        new AccountActivityPage.FindTransactions();
         Assert.assertTrue("Contains " + string, new AccountActivityPage.FindTransactions().isSearchResultContains(string));
     }
 
@@ -83,10 +83,8 @@ public class FindTransactionsSteps {
 
     @Then("there is NO {string}")
     public void there_is_NO(String otherType) {
-        String xpath = "//div[@id='filtered_transactions_for_account']//th[contains(text(),'" + otherType + "')]//..//..//..//td[3]";
-        List<WebElement> elements = Driver.get().findElements(By.xpath(xpath));
 
-        elements.forEach(element -> System.out.println(element.getText().contentEquals("")));
+
 
     }
 

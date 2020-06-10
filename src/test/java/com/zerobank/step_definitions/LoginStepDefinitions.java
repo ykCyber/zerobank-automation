@@ -12,7 +12,8 @@ public class LoginStepDefinitions {
     @Given("the user logged in with correct credentials")
     public void the_user_logged_in_with_correct_credentials() {
 
-        loginPage.loginWithTrueCredentials();
+
+        Assert.assertTrue( "Log Status :",loginPage.loginWithTrueCredentials());
     }
 
 
