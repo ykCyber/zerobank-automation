@@ -39,9 +39,9 @@ public class LoginPage extends BasePage {
         userName.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
         submit.click();
-        if (isPageActive(ConfigurationReader.get("landPage")) && !isLoginErrorMessageDisplayed())
+        if (isPageActive(ConfigurationReader.get("landPage")))
             System.out.println("Logged in successfully");
-        return isPageActive(ConfigurationReader.get("landPage")) && isLoginErrorMessageDisplayed();
+        return isPageActive(ConfigurationReader.get("landPage"));
     }
 
     public boolean loginWithTrueCredentials() {
