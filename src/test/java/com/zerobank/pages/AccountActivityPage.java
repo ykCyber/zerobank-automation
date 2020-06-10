@@ -50,21 +50,27 @@ public class AccountActivityPage extends BasePage {
 
     public static class FindTransactions {
         @FindBy(name = "fromDate")
-        WebElement fromDate;
+        protected WebElement fromDate;
 
         @FindBy(id = "aa_toDate")
-        WebElement toDate;
+        protected WebElement toDate;
 
         @FindBy(xpath = "//button[@class='btn btn-primary']")
-        WebElement findButton;
+        protected WebElement findButton;
         @FindBy(xpath = "//div[@id='filtered_transactions_for_account']//td[1]")
         List<WebElement> resultDates;
+        @FindBy(id = "")
+        public WebElement resultTypes;
+
         @FindBy(xpath = "//div[@id='ui-tabs-2']//tr//td[2]")
         List<WebElement> resultDescriptions;
         @FindBy(id = "aa_description")
         WebElement descriptonBox;
         @FindBy(className = "well")
         WebElement noResulText;
+        @FindBy(id = "aa_type")
+        protected WebElement selectType;
+
 
         //div[@id='filtered_transactions_for_account']//td[1]
 
@@ -145,7 +151,12 @@ public class AccountActivityPage extends BasePage {
             boolean toBoolean = toDate >= firstLine;
             return fromBoolean & toBoolean;
         }
-
+        //select withdrawl or Deposit options
+        public void selectType(String type) {
+            Select select = new Select(selectType);
+            select.selectByVisibleText(type);
+            System.out.println("select.getFirstSelectedOption().getText() = " + select.getFirstSelectedOption().getText());
+        }
     }
 
     public static class ShowTransactions extends BasePage {

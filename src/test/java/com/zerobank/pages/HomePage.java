@@ -6,10 +6,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.*;
+
 public class HomePage {
-    public HomePage() {
+
+
+    public HomePage() throws IOException {
+//        writeToFile(howManyTimesIVisitHomePage);
         PageFactory.initElements(Driver.get(), this);
+
     }
+
+
+
 
     @FindBy(className = ".alert")
     WebElement alert;

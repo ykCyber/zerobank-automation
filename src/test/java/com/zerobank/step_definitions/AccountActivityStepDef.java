@@ -20,9 +20,9 @@ public class AccountActivityStepDef {
 
     @Then("the {string} page should be displayed")
     public void the_page_should_be_displayed(String page) {
-      boolean flag =  BasePage.isPageActive(page);
 
-      Assert.assertTrue(page+" page is displayed",flag);
+
+        Assert.assertTrue(page + " page is displayed", BasePage.isPageActive(page));
 
 
     }

@@ -22,9 +22,10 @@ public class Driver {
     }
 
     private static WebDriver driver;
+    private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
 
     public static WebDriver get() {
-        // Test
+
         if (driver == null) {
             // this line will tell which browser should open based on the value from properties file
             String browser = ConfigurationReader.get("browser");

@@ -1,14 +1,19 @@
 package com.zerobank.step_definitions;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.utilities.BrowserUtils;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-import java.util.Date;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class FindTransactionsSteps {
@@ -41,7 +46,7 @@ public class FindTransactionsSteps {
 
     @And("the results table should only not contain transactions dated {string}")
     public void theResultsTableShouldOnlyNotContainTransactionsDated(String removedDate) {
-       AccountActivityPage.FindTransactions findTransactions = new AccountActivityPage.FindTransactions();
+        AccountActivityPage.FindTransactions findTransactions = new AccountActivityPage.FindTransactions();
 
         System.out.println("findTransactions.isNotContainDate(removedDate) = " + findTransactions.isNotContainDate(removedDate));
         System.out.println("is not in the list " + removedDate);
@@ -64,7 +69,21 @@ public class FindTransactionsSteps {
     @Then("when search {string} results should contain {string}")
     public void whenSearchResultsShouldContain(String searchItem, String expectedResult) {
         results_should_contain(expectedResult);
+    }
+
+    @When("user selects type {string}")
+    public void user_selects_type(String type) {
+        new AccountActivityPage.FindTransactions().selectType(type);
+    }
+
+    @Then("there is NO {string}")
+    public void there_is_NO(String otherType) {
+        String xpath = "//div[@id='filtered_transactions_for_account']//th[contains(text(),'" + otherType + "')]//..//..//..//td[3]";
+        List<WebElement> elements = Driver.get().findElements(By.xpath(xpath));
+
+        elements.forEach(element -> System.out.println(element.getText().contentEquals("")));
 
     }
+
 }
 
