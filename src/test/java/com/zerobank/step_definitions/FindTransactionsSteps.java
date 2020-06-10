@@ -16,9 +16,9 @@ public class FindTransactionsSteps {
 
     @Then("results table should only show transactions dates between {string} to {string}")
     public void results_table_should_only_show_transactions_dates_between_to(String fromDat, String toDat) throws ParseException {
-       // boolean rangeFlag = new AccountActivityPage.FindTransactions().isResultsInRange(fromDat, toDat);
-        new AccountActivityPage.FindTransactions().areResltsInRage(fromDat, toDat);
-       // Assert.assertTrue("results are in range ", rangeFlag);
+        // boolean rangeFlag = new AccountActivityPage.FindTransactions().isResultsInRange(fromDat, toDat);
+        new AccountActivityPage.FindTransactions().isResultInRange(fromDat, toDat);
+        // Assert.assertTrue("results are in range ", rangeFlag);
     }
 
     @When("clicks search")
@@ -77,7 +77,6 @@ public class FindTransactionsSteps {
 
     @Then("there is NO {string}")
     public void there_is_NO(String otherType) {
-
 
 
     }

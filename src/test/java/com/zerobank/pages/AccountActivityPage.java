@@ -137,7 +137,16 @@ public class AccountActivityPage extends BasePage implements ResultsTable {
             return contains;
         }
 
-        public void areResltsInRage(String fromDat, String toDat) throws ParseException {
+        //param str fromDate , to Date
+        //gets list of Results Date
+        // @FindBy(xpath = "//div[@id='filtered_transactions_for_account']//td[1]")
+        // List<WebElement> resultDates;
+        // convert given strs to related date Format yyyy-MM-dd
+        // get first line Date from webPage convert to date
+        // get last line Date from webPage convert to date
+        //first(line) date of table must be earlier than provided toDate
+        //last(line) date of table must be later than provided fromDate
+        public boolean isResultInRange(String fromDat, String toDat) throws ParseException {
             List<String> elementsText = BrowserUtils.getElementsText(resultDates);
 
             SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -145,12 +154,17 @@ public class AccountActivityPage extends BasePage implements ResultsTable {
             Date provided_ToDate = dateFormatter.parse(toDat);
             Date table_FirstLine = dateFormatter.parse(elementsText.get(0));
             Date table_LastLine = dateFormatter.parse(elementsText.get(elementsText.size() - 1));
-            System.out.println("fromTableLastLine = " + dateFormatter.format(table_LastLine));
-            System.out.println("fromTableFirstLine = " + dateFormatter.format(table_FirstLine));
-            System.out.println("providedFromDate = " + dateFormatter.format(provided_FromDate));
-            System.out.println("providedFromDate = " + dateFormatter.format(provided_ToDate));
-            System.out.println("tableLastLine.after(providedFromDate) = " + !table_LastLine.before(provided_FromDate));
-            System.out.println("tableFirstLine.before(providedToDate) = " + !table_FirstLine.after(provided_ToDate));
+//            System.out.println("fromTableLastLine = " + dateFormatter.format(table_LastLine));
+//            System.out.println("fromTableFirstLine = " + dateFormatter.format(table_FirstLine));
+//            System.out.println("providedFromDate = " + dateFormatter.format(provided_FromDate));
+//            System.out.println("providedFromDate = " + dateFormatter.format(provided_ToDate));
+//            System.out.println("tableLastLine.after(providedFromDate) = " + !table_LastLine.before(provided_FromDate));
+//            System.out.println("tableFirstLine.before(providedToDate) = " + !table_FirstLine.after(provided_ToDate));
+            //if two dates are same before or after methods return false
+            // so that we have to use  !before and !after
+            //lastLine is not before than provided From date
+            //first line is not after than provided ToDate
+            return !table_LastLine.before(provided_FromDate) && !table_FirstLine.after(provided_ToDate);
         }
 
         public boolean isResultsInRange(String from, String to) {
