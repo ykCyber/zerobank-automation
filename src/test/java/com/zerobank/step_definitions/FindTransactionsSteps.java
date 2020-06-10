@@ -1,28 +1,24 @@
 package com.zerobank.step_definitions;
 
 import com.zerobank.pages.AccountActivityPage;
-import com.zerobank.pages.LoginPage;
-import com.zerobank.pages.PayBills;
 import com.zerobank.utilities.BrowserUtils;
-import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
+import java.text.ParseException;
 
 
 public class FindTransactionsSteps {
 
 
     @Then("results table should only show transactions dates between {string} to {string}")
-    public void results_table_should_only_show_transactions_dates_between_to(String string, String string2) {
-        boolean rangeFlag = new AccountActivityPage.FindTransactions().isResultsInRange(string, string2);
-        Assert.assertTrue("results are in range ", rangeFlag);
+    public void results_table_should_only_show_transactions_dates_between_to(String fromDat, String toDat) throws ParseException {
+       // boolean rangeFlag = new AccountActivityPage.FindTransactions().isResultsInRange(fromDat, toDat);
+        new AccountActivityPage.FindTransactions().areResltsInRage(fromDat, toDat);
+       // Assert.assertTrue("results are in range ", rangeFlag);
     }
 
     @When("clicks search")

@@ -9,9 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class AccountActivityPage extends BasePage implements ResultsTable {
     public AccountActivityPage() {
@@ -137,6 +137,22 @@ public class AccountActivityPage extends BasePage implements ResultsTable {
             return contains;
         }
 
+        public void areResltsInRage(String fromDat, String toDat) throws ParseException {
+            List<String> elementsText = BrowserUtils.getElementsText(resultDates);
+
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date provided_FromDate = dateFormatter.parse(fromDat);
+            Date provided_ToDate = dateFormatter.parse(toDat);
+            Date table_FirstLine = dateFormatter.parse(elementsText.get(0));
+            Date table_LastLine = dateFormatter.parse(elementsText.get(elementsText.size() - 1));
+            System.out.println("fromTableLastLine = " + dateFormatter.format(table_LastLine));
+            System.out.println("fromTableFirstLine = " + dateFormatter.format(table_FirstLine));
+            System.out.println("providedFromDate = " + dateFormatter.format(provided_FromDate));
+            System.out.println("providedFromDate = " + dateFormatter.format(provided_ToDate));
+            System.out.println("tableLastLine.after(providedFromDate) = " + !table_LastLine.before(provided_FromDate));
+            System.out.println("tableFirstLine.before(providedToDate) = " + !table_FirstLine.after(provided_ToDate));
+        }
+
         public boolean isResultsInRange(String from, String to) {
 
             int fromDate = Integer.parseInt(from.replace("-", ""));
@@ -159,6 +175,7 @@ public class AccountActivityPage extends BasePage implements ResultsTable {
             select.selectByVisibleText(type);
             System.out.println("select.getFirstSelectedOption().getText() = " + select.getFirstSelectedOption().getText());
         }
+
     }
 
     public static class ShowTransactions extends BasePage {
