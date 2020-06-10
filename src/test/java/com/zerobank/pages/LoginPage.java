@@ -26,8 +26,10 @@ public class LoginPage extends BasePage {
     public boolean isLoginErrorMessageDisplayed() {
         //if user enters wrong credentials
         //page title is "Log-in" and an alert is displayed
+        if (getPageTitle().contentEquals("Log in")) {
         System.out.println(alert.getText());
-        return getPageTitle().contentEquals("Log in") && alert.isDisplayed();
+        }
+        return getPageTitle().contentEquals("Log in");
     }
 
     public boolean login(String userNameStr, String passwordStr) {
