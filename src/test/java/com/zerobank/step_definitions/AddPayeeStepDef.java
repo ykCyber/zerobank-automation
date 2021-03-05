@@ -2,14 +2,16 @@ package com.zerobank.step_definitions;
 
 import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.PayBills;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 
 import java.util.Map;
 
 public class AddPayeeStepDef {
     @Then("the user accesses the Add New Payee tab")
     public void the_user_accesses_the_Add_New_Payee_tab() {
-     //Todo  Driver.get().findElement(By.linkText("Add New Payee")).click();
+     Driver.get().findElement(By.linkText("Add New Payee")).click();
      //TODO   BrowserUtils.waitForVisibility(new PayBills.AddNewPayee().payeeNameBox,
      //TODO 2);
     }

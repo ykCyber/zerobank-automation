@@ -83,10 +83,10 @@ public abstract class BasePage {
         boolean titleIsCorrect = getPageTitle().contentEquals(str);
 
         String tab = "//a[contains(text(),\"" + str + "\")]/..";
-        WebElement element = Driver.get().findElement(By.xpath(tab));
+       // WebElement element = Driver.get().findElement(By.xpath(tab));
         //ismi class olan attributun valuesu "active" olması lazım
-        String isActive = element.getAttribute("class");
-        return (isActive.contentEquals("active") && titleIsCorrect);
+       // String isActive = element.getAttribute("class");
+        return false;
     }
 
     public void gotoPage(String pageName) {

@@ -29,8 +29,8 @@ public class FindTransactionsSteps {
 
     @Given("the user accesses the Find Transactions tab")
     public void the_user_accesses_the_Find_Transactions_tab() {
-        new AccountActivityPage().goToFindTranscations();
 
+        new AccountActivityPage().goToFindTranscations();
     }
 
     @When("the user enters date range from {string} to {string}")

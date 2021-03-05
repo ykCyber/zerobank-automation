@@ -4,7 +4,7 @@ Feature: Find Transactions in Account Activity
     Given the user logged in with correct credentials
     And the user accesses the Find Transactions tab
 
-  @wip
+
   Scenario: Search by dates
     When the user enters date range from "2012-09-01" to "2012-09-06"
     And clicks search

@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,17 +30,22 @@ public class Driver {
         if (driver == null) {
             // this line will tell which browser should open based on the value from properties file
             String browser = ConfigurationReader.get("browser");
-//            ChromeOptions chromeOptions = new ChromeOptions();
-//            String projectPath = System.getProperty("user.dir");
-//            String relativePath = "drivers\\chropath_6_1_4_0.crx";
-//            System.out.println("Chrome is launching with ChroPath...");
-//            String filePath = (projectPath + "\\" + relativePath);
-//            chromeOptions.addExtensions(new File(filePath));
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--ignore-ssl-errors=yes");
+            chromeOptions.addArguments("--ignore-certificate-errors");
+
+
+            String projectPath = System.getProperty("user.dir");
+            String relativePath = "drivers\\chropath_6_1_4_0.crx";
+            System.out.println("Chrome is launching with ChroPath...");
+            String filePath = (projectPath + "\\" + relativePath);
+            chromeOptions.addExtensions(new File(filePath));
+
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
 //                    driver = new ChromeDriver(chromeOptions);
-                    driver = new ChromeDriver();
+                    driver = new ChromeDriver(chromeOptions);
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
