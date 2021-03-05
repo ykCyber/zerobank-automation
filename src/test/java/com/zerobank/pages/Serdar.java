@@ -2,7 +2,7 @@ package com.zerobank.pages;
 
 public class Serdar {
 
-    @Test
+    @Test Serdar
     public void test1(){
 
     }
